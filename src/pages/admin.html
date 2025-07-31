@@ -1,0 +1,724 @@
+<!-- Admin Page Content -->
+<div class="admin-container">
+    <div class="container">
+        <!-- Admin Header -->
+        <div class="admin-header">
+            <div class="row">
+                <div class="col-8">
+                    <h1>Admin Panel</h1>
+                    <p class="lead">Manage sites, users, and system configuration</p>
+                </div>
+                <div class="col-4 text-right">
+                    <button class="btn btn-primary" onclick="saveAllSettings()">
+                        <span class="save-icon">💾</span> Save All
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Admin Navigation Tabs -->
+        <div class="admin-tabs">
+            <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="sites-tab" data-toggle="tab" data-target="#sites" type="button" role="tab">
+                        <span class="tab-icon">🌐</span> Sites
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="users-tab" data-toggle="tab" data-target="#users" type="button" role="tab">
+                        <span class="tab-icon">👥</span> Users
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="settings-tab" data-toggle="tab" data-target="#settings" type="button" role="tab">
+                        <span class="tab-icon">⚙️</span> Settings
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="logs-tab" data-toggle="tab" data-target="#logs" type="button" role="tab">
+                        <span class="tab-icon">📋</span> Logs
+                    </button>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Tab Content -->
+        <div class="tab-content" id="adminTabContent">
+            <!-- Sites Tab -->
+            <div class="tab-pane fade show active" id="sites" role="tabpanel">
+                <div class="sites-section">
+                    <div class="section-header">
+                        <h3>Site Management</h3>
+                        <button class="btn btn-success" onclick="createNewSite()">
+                            <span class="btn-icon">➕</span> Add Site
+                        </button>
+                    </div>
+                    
+                    <div class="sites-grid" id="sitesGrid">
+                        <!-- Site cards will be loaded here -->
+                        <div class="site-card">
+                            <div class="site-header">
+                                <h4>example.com</h4>
+                                <span class="site-status online">Online</span>
+                            </div>
+                            <div class="site-content">
+                                <p><strong>Subdomain:</strong> example</p>
+                                <p><strong>Created:</strong> 2024-01-15</p>
+                                <p><strong>Files:</strong> 12</p>
+                                <p><strong>Views:</strong> 1,234</p>
+                            </div>
+                            <div class="site-actions">
+                                <button class="btn btn-sm btn-primary" onclick="editSite('example')">Edit</button>
+                                <button class="btn btn-sm btn-secondary" onclick="viewSite('example')">View</button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteSite('example')">Delete</button>
+                            </div>
+                        </div>
+                        
+                        <div class="site-card">
+                            <div class="site-header">
+                                <h4>demo.com</h4>
+                                <span class="site-status offline">Offline</span>
+                            </div>
+                            <div class="site-content">
+                                <p><strong>Subdomain:</strong> demo</p>
+                                <p><strong>Created:</strong> 2024-01-10</p>
+                                <p><strong>Files:</strong> 8</p>
+                                <p><strong>Views:</strong> 567</p>
+                            </div>
+                            <div class="site-actions">
+                                <button class="btn btn-sm btn-primary" onclick="editSite('demo')">Edit</button>
+                                <button class="btn btn-sm btn-secondary" onclick="viewSite('demo')">View</button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteSite('demo')">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Users Tab -->
+            <div class="tab-pane fade" id="users" role="tabpanel">
+                <div class="users-section">
+                    <div class="section-header">
+                        <h3>User Management</h3>
+                        <button class="btn btn-success" onclick="createNewUser()">
+                            <span class="btn-icon">👤</span> Add User
+                        </button>
+                    </div>
+                    
+                    <div class="users-table">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Last Login</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <tr>
+                                    <td>admin</td>
+                                    <td>admin@example.com</td>
+                                    <td><span class="badge badge-primary">Admin</span></td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>2024-01-15 10:30</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Edit</button>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>user1</td>
+                                    <td>user1@example.com</td>
+                                    <td><span class="badge badge-secondary">User</span></td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>2024-01-14 15:45</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-primary">Edit</button>
+                                        <button class="btn btn-sm btn-danger">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Tab -->
+            <div class="tab-pane fade" id="settings" role="tabpanel">
+                <div class="settings-section">
+                    <div class="section-header">
+                        <h3>System Settings</h3>
+                    </div>
+                    
+                    <div class="settings-grid">
+                        <!-- General Settings -->
+                        <div class="settings-card">
+                            <h4>General Settings</h4>
+                            <div class="form-group">
+                                <label for="siteName">Site Name</label>
+                                <input type="text" id="siteName" class="form-control" value="AJAX Site Manager">
+                            </div>
+                            <div class="form-group">
+                                <label for="siteDescription">Site Description</label>
+                                <textarea id="siteDescription" class="form-control" rows="3">Modern AJAX-based site management system</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="timezone">Timezone</label>
+                                <select id="timezone" class="form-control">
+                                    <option value="UTC">UTC</option>
+                                    <option value="America/New_York">Eastern Time</option>
+                                    <option value="America/Chicago">Central Time</option>
+                                    <option value="America/Denver">Mountain Time</option>
+                                    <option value="America/Los_Angeles">Pacific Time</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Storage Settings -->
+                        <div class="settings-card">
+                            <h4>Storage Settings</h4>
+                            <div class="form-group">
+                                <label for="bucketName">Bucket Name</label>
+                                <input type="text" id="bucketName" class="form-control" value="myaispace-bucket">
+                            </div>
+                            <div class="form-group">
+                                <label for="region">Region</label>
+                                <select id="region" class="form-control">
+                                    <option value="nyc3">New York (NYC3)</option>
+                                    <option value="sfo3">San Francisco (SFO3)</option>
+                                    <option value="ams3">Amsterdam (AMS3)</option>
+                                    <option value="sgp1">Singapore (SGP1)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="directory">Directory</label>
+                                <input type="text" id="directory" class="form-control" value="/myaispace/subdomains/">
+                            </div>
+                        </div>
+                        
+                        <!-- Performance Settings -->
+                        <div class="settings-card">
+                            <h4>Performance Settings</h4>
+                            <div class="form-group">
+                                <label for="cacheEnabled">Enable Caching</label>
+                                <div class="form-check">
+                                    <input type="checkbox" id="cacheEnabled" class="form-check-input" checked>
+                                    <label class="form-check-label" for="cacheEnabled">Cache content for better performance</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cacheExpiry">Cache Expiry (minutes)</label>
+                                <input type="number" id="cacheExpiry" class="form-control" value="5" min="1" max="60">
+                            </div>
+                            <div class="form-group">
+                                <label for="debugMode">Debug Mode</label>
+                                <div class="form-check">
+                                    <input type="checkbox" id="debugMode" class="form-check-input" checked>
+                                    <label class="form-check-label" for="debugMode">Enable debug logging</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Security Settings -->
+                        <div class="settings-card">
+                            <h4>Security Settings</h4>
+                            <div class="form-group">
+                                <label for="corsOrigins">CORS Origins</label>
+                                <textarea id="corsOrigins" class="form-control" rows="3" placeholder="https://example.com&#10;https://www.example.com">https://yourdomain.com
+http://localhost:3000</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="sessionTimeout">Session Timeout (minutes)</label>
+                                <input type="number" id="sessionTimeout" class="form-control" value="30" min="5" max="1440">
+                            </div>
+                            <div class="form-group">
+                                <label for="maxLoginAttempts">Max Login Attempts</label>
+                                <input type="number" id="maxLoginAttempts" class="form-control" value="5" min="3" max="10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logs Tab -->
+            <div class="tab-pane fade" id="logs" role="tabpanel">
+                <div class="logs-section">
+                    <div class="section-header">
+                        <h3>System Logs</h3>
+                        <div class="log-controls">
+                            <select id="logLevel" class="form-control">
+                                <option value="all">All Levels</option>
+                                <option value="error">Error Only</option>
+                                <option value="warning">Warning & Error</option>
+                                <option value="info">Info, Warning & Error</option>
+                            </select>
+                            <button class="btn btn-secondary" onclick="refreshLogs()">
+                                <span class="refresh-icon">↻</span> Refresh
+                            </button>
+                            <button class="btn btn-danger" onclick="clearLogs()">
+                                <span class="clear-icon">🗑️</span> Clear
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="logs-container">
+                        <div class="log-entry" data-level="info">
+                            <span class="log-timestamp">2024-01-15 10:30:15</span>
+                            <span class="log-level info">INFO</span>
+                            <span class="log-message">Application started successfully</span>
+                        </div>
+                        
+                        <div class="log-entry" data-level="warning">
+                            <span class="log-timestamp">2024-01-15 10:29:45</span>
+                            <span class="log-level warning">WARN</span>
+                            <span class="log-message">Cache size approaching limit (85% used)</span>
+                        </div>
+                        
+                        <div class="log-entry" data-level="error">
+                            <span class="log-timestamp">2024-01-15 10:28:30</span>
+                            <span class="log-level error">ERROR</span>
+                            <span class="log-message">Failed to connect to database: Connection timeout</span>
+                        </div>
+                        
+                        <div class="log-entry" data-level="info">
+                            <span class="log-timestamp">2024-01-15 10:27:15</span>
+                            <span class="log-level info">INFO</span>
+                            <span class="log-message">User 'admin' logged in successfully</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Admin-specific JavaScript -->
+<script>
+    // Tab functionality
+    $(document).ready(function() {
+        // Initialize tabs
+        $('.nav-tabs button').on('click', function(e) {
+            e.preventDefault();
+            
+            // Remove active class from all tabs and content
+            $('.nav-tabs button').removeClass('active');
+            $('.tab-pane').removeClass('show active');
+            
+            // Add active class to clicked tab
+            $(this).addClass('active');
+            
+            // Show corresponding content
+            const target = $(this).data('target');
+            $(target).addClass('show active');
+        });
+        
+        // Load initial data
+        loadSites();
+        loadUsers();
+        loadSettings();
+        loadLogs();
+    });
+    
+    // Site management functions
+    function loadSites() {
+        // This would typically load from an API
+        console.log('Loading sites...');
+    }
+    
+    function createNewSite() {
+        // Show create site modal
+        showCreateSiteModal();
+    }
+    
+    function editSite(subdomain) {
+        // Show edit site modal
+        showEditSiteModal(subdomain);
+    }
+    
+    function viewSite(subdomain) {
+        // Navigate to site
+        const url = UrlUtils.buildSubdomainUrl(subdomain);
+        window.open(url, '_blank');
+    }
+    
+    function deleteSite(subdomain) {
+        if (confirm(`Are you sure you want to delete the site '${subdomain}'?`)) {
+            // Delete site logic
+            console.log(`Deleting site: ${subdomain}`);
+        }
+    }
+    
+    // User management functions
+    function loadUsers() {
+        // This would typically load from an API
+        console.log('Loading users...');
+    }
+    
+    function createNewUser() {
+        // Show create user modal
+        showCreateUserModal();
+    }
+    
+    // Settings functions
+    function loadSettings() {
+        // Load settings from localStorage or API
+        const config = StateManager.loadConfig();
+        if (config) {
+            $('#siteName').val(config.siteName || 'AJAX Site Manager');
+            $('#bucketName').val(config.bucket || 'myaispace-bucket');
+            $('#region').val(config.region || 'nyc3');
+            $('#directory').val(config.directory || '/myaispace/subdomains/');
+            $('#cacheEnabled').prop('checked', config.cacheEnabled !== false);
+            $('#cacheExpiry').val(config.cacheExpiry || 5);
+            $('#debugMode').prop('checked', config.debugMode !== false);
+        }
+    }
+    
+    function saveAllSettings() {
+        // Collect all settings
+        const settings = {
+            siteName: $('#siteName').val(),
+            siteDescription: $('#siteDescription').val(),
+            timezone: $('#timezone').val(),
+            bucket: $('#bucketName').val(),
+            region: $('#region').val(),
+            directory: $('#directory').val(),
+            cacheEnabled: $('#cacheEnabled').is(':checked'),
+            cacheExpiry: parseInt($('#cacheExpiry').val()),
+            debugMode: $('#debugMode').is(':checked'),
+            corsOrigins: $('#corsOrigins').val().split('\n').filter(origin => origin.trim()),
+            sessionTimeout: parseInt($('#sessionTimeout').val()),
+            maxLoginAttempts: parseInt($('#maxLoginAttempts').val())
+        };
+        
+        // Save settings
+        StateManager.saveConfig(settings);
+        
+        // Update global config
+        Object.assign(SpacesConfig, settings);
+        
+        // Show success message
+        ErrorHandler.showError('Settings saved successfully', 'success');
+    }
+    
+    // Log functions
+    function loadLogs() {
+        // This would typically load from an API
+        console.log('Loading logs...');
+    }
+    
+    function refreshLogs() {
+        loadLogs();
+    }
+    
+    function clearLogs() {
+        if (confirm('Are you sure you want to clear all logs?')) {
+            $('.log-entry').remove();
+            ErrorHandler.showError('Logs cleared', 'success');
+        }
+    }
+    
+    // Modal functions (placeholder)
+    function showCreateSiteModal() {
+        alert('Create site modal would appear here');
+    }
+    
+    function showEditSiteModal(subdomain) {
+        alert(`Edit site modal for ${subdomain} would appear here`);
+    }
+    
+    function showCreateUserModal() {
+        alert('Create user modal would appear here');
+    }
+    
+    // Log level filtering
+    $('#logLevel').on('change', function() {
+        const selectedLevel = $(this).val();
+        
+        $('.log-entry').each(function() {
+            const entryLevel = $(this).data('level');
+            
+            if (selectedLevel === 'all' || 
+                (selectedLevel === 'error' && entryLevel === 'error') ||
+                (selectedLevel === 'warning' && (entryLevel === 'warning' || entryLevel === 'error')) ||
+                (selectedLevel === 'info' && (entryLevel === 'info' || entryLevel === 'warning' || entryLevel === 'error'))) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+</script>
+
+<!-- Admin-specific CSS -->
+<style>
+    .admin-container {
+        padding: 2rem 0;
+    }
+    
+    .admin-header {
+        margin-bottom: 2rem;
+    }
+    
+    .admin-tabs {
+        margin-bottom: 2rem;
+    }
+    
+    .nav-tabs {
+        border-bottom: 2px solid #dee2e6;
+    }
+    
+    .nav-tabs .nav-link {
+        border: none;
+        border-bottom: 2px solid transparent;
+        border-radius: 0;
+        padding: 1rem 1.5rem;
+        color: #666;
+        font-weight: 500;
+    }
+    
+    .nav-tabs .nav-link:hover {
+        border-color: transparent;
+        color: #007bff;
+    }
+    
+    .nav-tabs .nav-link.active {
+        border-color: #007bff;
+        color: #007bff;
+        background: transparent;
+    }
+    
+    .tab-icon {
+        margin-right: 0.5rem;
+    }
+    
+    .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .btn-icon {
+        margin-right: 0.5rem;
+    }
+    
+    /* Sites Grid */
+    .sites-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .site-card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    .site-header {
+        padding: 1rem;
+        background: #f8f9fa;
+        border-bottom: 1px solid #e9ecef;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .site-header h4 {
+        margin: 0;
+        color: #333;
+    }
+    
+    .site-status {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    
+    .site-status.online {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    .site-status.offline {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    
+    .site-content {
+        padding: 1rem;
+    }
+    
+    .site-content p {
+        margin: 0.5rem 0;
+        font-size: 0.9rem;
+    }
+    
+    .site-actions {
+        padding: 1rem;
+        border-top: 1px solid #e9ecef;
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    /* Users Table */
+    .users-table {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    
+    .table {
+        margin: 0;
+    }
+    
+    .table th {
+        background: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+        font-weight: 600;
+        color: #495057;
+    }
+    
+    .badge {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+    
+    .badge-primary {
+        background: #007bff;
+        color: #fff;
+    }
+    
+    .badge-secondary {
+        background: #6c757d;
+        color: #fff;
+    }
+    
+    .badge-success {
+        background: #28a745;
+        color: #fff;
+    }
+    
+    /* Settings Grid */
+    .settings-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .settings-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .settings-card h4 {
+        margin-bottom: 1.5rem;
+        color: #333;
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 0.5rem;
+    }
+    
+    /* Logs */
+    .log-controls {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+    
+    .logs-container {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        max-height: 500px;
+        overflow-y: auto;
+    }
+    
+    .log-entry {
+        padding: 0.75rem 1rem;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-family: monospace;
+        font-size: 0.9rem;
+    }
+    
+    .log-entry:last-child {
+        border-bottom: none;
+    }
+    
+    .log-timestamp {
+        color: #666;
+        min-width: 150px;
+    }
+    
+    .log-level {
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-weight: 500;
+        min-width: 60px;
+        text-align: center;
+    }
+    
+    .log-level.info {
+        background: #d1ecf1;
+        color: #0c5460;
+    }
+    
+    .log-level.warning {
+        background: #fff3cd;
+        color: #856404;
+    }
+    
+    .log-level.error {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    
+    .log-message {
+        flex: 1;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .sites-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .settings-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .log-controls {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .section-header {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: stretch;
+        }
+        
+        .log-entry {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .log-timestamp {
+            min-width: auto;
+        }
+    }
+</style> 

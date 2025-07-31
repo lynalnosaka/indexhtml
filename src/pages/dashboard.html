@@ -1,0 +1,468 @@
+<!-- Dashboard Page Content -->
+<div class="dashboard-container">
+    <div class="container">
+        <!-- Dashboard Header -->
+        <div class="dashboard-header">
+            <div class="row">
+                <div class="col-8">
+                    <h1>Dashboard</h1>
+                    <p class="lead">Manage your AJAX sites and monitor performance</p>
+                </div>
+                <div class="col-4 text-right">
+                    <button class="btn btn-primary" onclick="refreshDashboard()">
+                        <span class="refresh-icon">↻</span> Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Stats -->
+        <div class="stats-section">
+            <div class="row">
+                <div class="col-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-content">
+                            <h3 id="totalSites">-</h3>
+                            <p>Total Sites</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-content">
+                            <h3 id="totalViews">-</h3>
+                            <p>Total Views</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">💾</div>
+                        <div class="stat-content">
+                            <h3 id="cacheSize">-</h3>
+                            <p>Cache Size</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-content">
+                            <h3 id="avgLoadTime">-</h3>
+                            <p>Avg Load Time</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Dashboard Content -->
+        <div class="dashboard-content">
+            <div class="row">
+                <!-- Recent Activity -->
+                <div class="col-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Recent Activity</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-list" id="activityList">
+                                <div class="activity-item">
+                                    <div class="activity-icon">📝</div>
+                                    <div class="activity-content">
+                                        <h4>Site Created</h4>
+                                        <p>New site "example.com" was created</p>
+                                        <small>2 minutes ago</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item">
+                                    <div class="activity-icon">📤</div>
+                                    <div class="activity-content">
+                                        <h4>File Uploaded</h4>
+                                        <p>index.html uploaded to example.com</p>
+                                        <small>5 minutes ago</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="activity-item">
+                                    <div class="activity-icon">🔧</div>
+                                    <div class="activity-content">
+                                        <h4>Configuration Updated</h4>
+                                        <p>CORS settings updated for example.com</p>
+                                        <small>10 minutes ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="col-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Quick Actions</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions">
+                                <a href="/admin/sites/create" class="nav-link btn btn-primary btn-block">
+                                    <span class="action-icon">➕</span>
+                                    Create New Site
+                                </a>
+                                
+                                <a href="/admin/files" class="nav-link btn btn-secondary btn-block">
+                                    <span class="action-icon">📁</span>
+                                    Manage Files
+                                </a>
+                                
+                                <a href="/admin/settings" class="nav-link btn btn-secondary btn-block">
+                                    <span class="action-icon">⚙️</span>
+                                    Settings
+                                </a>
+                                
+                                <a href="/admin/analytics" class="nav-link btn btn-secondary btn-block">
+                                    <span class="action-icon">📊</span>
+                                    Analytics
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- System Status -->
+                    <div class="card mt-3">
+                        <div class="card-header">
+                            <h3>System Status</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="status-list">
+                                <div class="status-item">
+                                    <span class="status-indicator online"></span>
+                                    <span class="status-label">API Server</span>
+                                </div>
+                                
+                                <div class="status-item">
+                                    <span class="status-indicator online"></span>
+                                    <span class="status-label">Database</span>
+                                </div>
+                                
+                                <div class="status-item">
+                                    <span class="status-indicator online"></span>
+                                    <span class="status-label">Storage</span>
+                                </div>
+                                
+                                <div class="status-item">
+                                    <span class="status-indicator online"></span>
+                                    <span class="status-label">CDN</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Performance Metrics -->
+        <div class="performance-section">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Performance Metrics</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="metrics-grid">
+                                <div class="metric-item">
+                                    <h4>Cache Hit Rate</h4>
+                                    <div class="metric-value" id="cacheHitRate">85%</div>
+                                    <div class="metric-chart">
+                                        <div class="progress">
+                                            <div class="progress-bar" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="metric-item">
+                                    <h4>Average Response Time</h4>
+                                    <div class="metric-value" id="avgResponseTime">120ms</div>
+                                    <div class="metric-chart">
+                                        <div class="progress">
+                                            <div class="progress-bar success" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="metric-item">
+                                    <h4>Error Rate</h4>
+                                    <div class="metric-value" id="errorRate">0.2%</div>
+                                    <div class="metric-chart">
+                                        <div class="progress">
+                                            <div class="progress-bar warning" style="width: 2%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="metric-item">
+                                    <h4>Uptime</h4>
+                                    <div class="metric-value" id="uptime">99.9%</div>
+                                    <div class="metric-chart">
+                                        <div class="progress">
+                                            <div class="progress-bar success" style="width: 99.9%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dashboard-specific JavaScript -->
+<script>
+    // Dashboard functionality
+    function refreshDashboard() {
+        // Show loading state
+        $('.dashboard-container').addClass('loading');
+        
+        // Refresh stats
+        loadDashboardStats();
+        
+        // Refresh activity
+        loadRecentActivity();
+        
+        // Refresh performance metrics
+        loadPerformanceMetrics();
+        
+        // Remove loading state after a short delay
+        setTimeout(() => {
+            $('.dashboard-container').removeClass('loading');
+        }, 1000);
+    }
+    
+    function loadDashboardStats() {
+        // Simulate loading stats from API
+        setTimeout(() => {
+            $('#totalSites').text('12');
+            $('#totalViews').text('1,234');
+            $('#cacheSize').text('2.5MB');
+            $('#avgLoadTime').text('120ms');
+        }, 500);
+    }
+    
+    function loadRecentActivity() {
+        // This would typically load from an API
+        console.log('Loading recent activity...');
+    }
+    
+    function loadPerformanceMetrics() {
+        // This would typically load from an API
+        console.log('Loading performance metrics...');
+    }
+    
+    // Initialize dashboard when content loads
+    $(document).ready(function() {
+        loadDashboardStats();
+        loadRecentActivity();
+        loadPerformanceMetrics();
+    });
+</script>
+
+<!-- Dashboard-specific CSS -->
+<style>
+    .dashboard-container {
+        padding: 2rem 0;
+    }
+    
+    .dashboard-header {
+        margin-bottom: 2rem;
+    }
+    
+    .refresh-icon {
+        margin-right: 0.5rem;
+    }
+    
+    .stats-section {
+        margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+    }
+    
+    .stat-icon {
+        font-size: 2rem;
+        margin-right: 1rem;
+    }
+    
+    .stat-content h3 {
+        margin: 0;
+        font-size: 2rem;
+        color: #007bff;
+    }
+    
+    .stat-content p {
+        margin: 0;
+        color: #666;
+    }
+    
+    .activity-list {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+    
+    .activity-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 1rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .activity-item:last-child {
+        border-bottom: none;
+    }
+    
+    .activity-icon {
+        font-size: 1.5rem;
+        margin-right: 1rem;
+        margin-top: 0.25rem;
+    }
+    
+    .activity-content h4 {
+        margin: 0 0 0.25rem 0;
+        font-size: 1rem;
+    }
+    
+    .activity-content p {
+        margin: 0 0 0.25rem 0;
+        color: #666;
+    }
+    
+    .activity-content small {
+        color: #999;
+    }
+    
+    .quick-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .btn-block {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 1rem;
+    }
+    
+    .action-icon {
+        margin-right: 0.5rem;
+    }
+    
+    .status-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .status-item {
+        display: flex;
+        align-items: center;
+    }
+    
+    .status-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 0.75rem;
+    }
+    
+    .status-indicator.online {
+        background: #28a745;
+    }
+    
+    .status-indicator.offline {
+        background: #dc3545;
+    }
+    
+    .status-indicator.warning {
+        background: #ffc107;
+    }
+    
+    .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .metric-item {
+        text-align: center;
+    }
+    
+    .metric-item h4 {
+        margin-bottom: 0.5rem;
+        color: #666;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .metric-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 0.5rem;
+    }
+    
+    .metric-chart {
+        max-width: 200px;
+        margin: 0 auto;
+    }
+    
+    .dashboard-container.loading {
+        opacity: 0.7;
+        pointer-events: none;
+    }
+    
+    .dashboard-container.loading::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #007bff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 10;
+    }
+    
+    @media (max-width: 768px) {
+        .stat-card {
+            margin-bottom: 1rem;
+        }
+        
+        .metrics-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .dashboard-header .text-right {
+            text-align: left;
+            margin-top: 1rem;
+        }
+    }
+</style> 

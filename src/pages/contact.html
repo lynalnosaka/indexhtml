@@ -1,0 +1,673 @@
+<!-- Contact Page Content -->
+<div class="contact-container">
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1>Contact Us</h1>
+            <p class="lead">Get in touch with our team for support, questions, or feedback</p>
+        </div>
+        
+        <!-- Contact Content -->
+        <div class="contact-content">
+            <div class="row">
+                <!-- Contact Form -->
+                <div class="col-8">
+                    <div class="contact-form-card">
+                        <h2>Send us a Message</h2>
+                        <form id="contactForm" class="contact-form">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="firstName">First Name *</label>
+                                        <input type="text" id="firstName" name="firstName" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="lastName">Last Name *</label>
+                                        <input type="text" id="lastName" name="lastName" class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" class="form-control" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="billing">Billing Question</option>
+                                    <option value="feature">Feature Request</option>
+                                    <option value="bug">Bug Report</option>
+                                    <option value="partnership">Partnership</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" class="form-control" rows="6" required 
+                                          placeholder="Please describe your inquiry in detail..."></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="priority">Priority</label>
+                                <div class="priority-options">
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="low" checked>
+                                        <span class="priority-label low">Low</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="medium">
+                                        <span class="priority-label medium">Medium</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="high">
+                                        <span class="priority-label high">High</span>
+                                    </label>
+                                    <label class="priority-option">
+                                        <input type="radio" name="priority" value="urgent">
+                                        <span class="priority-label urgent">Urgent</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" id="newsletter" name="newsletter" class="form-check-input">
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to our newsletter for updates and tips
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
+                                    <label class="form-check-label" for="privacy">
+                                        I agree to the <a href="/privacy" target="_blank">Privacy Policy</a> and 
+                                        <a href="/terms" target="_blank">Terms of Service</a>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <span class="submit-icon">📧</span>
+                                    Send Message
+                                </button>
+                                <button type="reset" class="btn btn-secondary btn-lg">
+                                    <span class="reset-icon">🔄</span>
+                                    Reset Form
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Contact Information -->
+                <div class="col-4">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon">📍</div>
+                            <h3>Our Location</h3>
+                            <p>123 Web Street<br>Digital City, DC 12345<br>United States</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">📞</div>
+                            <h3>Phone Support</h3>
+                            <p>+1 (555) 123-4567<br>Mon-Fri: 9AM-6PM EST</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">✉️</div>
+                            <h3>Email Support</h3>
+                            <p>support@myaispace.com<br>help@myaispace.com</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">💬</div>
+                            <h3>Live Chat</h3>
+                            <p>Available 24/7<br>Click the chat widget below</p>
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Section -->
+                    <div class="faq-section">
+                        <h3>Frequently Asked Questions</h3>
+                        <div class="faq-item">
+                            <h4>How do I create a new site?</h4>
+                            <p>Navigate to the Admin panel and click "Add Site" to start the creation process.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h4>What file types are supported?</h4>
+                            <p>We support HTML, CSS, JavaScript, images, and most common web file formats.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h4>How long does site creation take?</h4>
+                            <p>Site creation typically takes 1-2 minutes, including template generation and configuration.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h4>Is there a file size limit?</h4>
+                            <p>Individual files can be up to 100MB. Contact us for larger file requirements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Response Time Information -->
+        <div class="response-info">
+            <div class="row">
+                <div class="col-12">
+                    <div class="response-card">
+                        <h3>Response Times</h3>
+                        <div class="response-times">
+                            <div class="response-item">
+                                <span class="response-label">General Inquiries:</span>
+                                <span class="response-time">24-48 hours</span>
+                            </div>
+                            <div class="response-item">
+                                <span class="response-label">Technical Support:</span>
+                                <span class="response-time">4-8 hours</span>
+                            </div>
+                            <div class="response-item">
+                                <span class="response-label">Billing Questions:</span>
+                                <span class="response-time">2-4 hours</span>
+                            </div>
+                            <div class="response-item">
+                                <span class="response-label">Urgent Issues:</span>
+                                <span class="response-time">1-2 hours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact form JavaScript -->
+<script>
+    $(document).ready(function() {
+        // Initialize contact form
+        initializeContactForm();
+    });
+    
+    function initializeContactForm() {
+        const form = $('#contactForm');
+        
+        // Form submission handler
+        form.on('submit', function(e) {
+            e.preventDefault();
+            handleFormSubmission();
+        });
+        
+        // Real-time validation
+        form.find('input, textarea, select').on('blur', function() {
+            validateField($(this));
+        });
+        
+        // Character counter for message
+        $('#message').on('input', function() {
+            const maxLength = 1000;
+            const currentLength = $(this).val().length;
+            const remaining = maxLength - currentLength;
+            
+            if (!$(this).next('.char-counter').length) {
+                $(this).after(`<div class="char-counter">${remaining} characters remaining</div>`);
+            } else {
+                $(this).next('.char-counter').text(`${remaining} characters remaining`);
+            }
+            
+            if (remaining < 0) {
+                $(this).next('.char-counter').addClass('text-danger');
+            } else {
+                $(this).next('.char-counter').removeClass('text-danger');
+            }
+        });
+        
+        // Priority selection styling
+        $('.priority-option input').on('change', function() {
+            $('.priority-label').removeClass('selected');
+            $(this).siblings('.priority-label').addClass('selected');
+        });
+    }
+    
+    function validateField(field) {
+        const value = field.val().trim();
+        const fieldName = field.attr('name');
+        
+        // Remove existing validation
+        field.removeClass('is-valid is-invalid');
+        field.siblings('.validation-message').remove();
+        
+        let isValid = true;
+        let message = '';
+        
+        // Field-specific validation
+        switch (fieldName) {
+            case 'firstName':
+            case 'lastName':
+                if (value.length < 2) {
+                    isValid = false;
+                    message = 'Name must be at least 2 characters long';
+                }
+                break;
+                
+            case 'email':
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(value)) {
+                    isValid = false;
+                    message = 'Please enter a valid email address';
+                }
+                break;
+                
+            case 'message':
+                if (value.length < 10) {
+                    isValid = false;
+                    message = 'Message must be at least 10 characters long';
+                }
+                break;
+        }
+        
+        // Apply validation result
+        if (isValid && value) {
+            field.addClass('is-valid');
+        } else if (!isValid) {
+            field.addClass('is-invalid');
+            field.after(`<div class="validation-message text-danger">${message}</div>`);
+        }
+    }
+    
+    function handleFormSubmission() {
+        const form = $('#contactForm');
+        const submitBtn = form.find('button[type="submit"]');
+        const originalText = submitBtn.html();
+        
+        // Show loading state
+        submitBtn.prop('disabled', true).html(`
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Sending...
+        `);
+        
+        // Collect form data
+        const formData = {
+            firstName: $('#firstName').val(),
+            lastName: $('#lastName').val(),
+            email: $('#email').val(),
+            subject: $('#subject').val(),
+            message: $('#message').val(),
+            priority: $('input[name="priority"]:checked').val(),
+            newsletter: $('#newsletter').is(':checked'),
+            timestamp: new Date().toISOString()
+        };
+        
+        // Simulate form submission
+        setTimeout(() => {
+            // Simulate success
+            const success = Math.random() > 0.1; // 90% success rate
+            
+            if (success) {
+                showSuccessMessage(formData);
+                form[0].reset();
+                form.find('.is-valid, .is-invalid').removeClass('is-valid is-invalid');
+                form.find('.validation-message, .char-counter').remove();
+            } else {
+                showErrorMessage('Failed to send message. Please try again.');
+            }
+            
+            // Reset button
+            submitBtn.prop('disabled', false).html(originalText);
+        }, 2000);
+    }
+    
+    function showSuccessMessage(formData) {
+        const successHtml = `
+            <div class="success-message">
+                <div class="success-icon">✅</div>
+                <h3>Message Sent Successfully!</h3>
+                <p>Thank you for contacting us, ${formData.firstName}. We'll get back to you within our standard response time.</p>
+                
+                <div class="message-details">
+                    <p><strong>Subject:</strong> ${formData.subject}</p>
+                    <p><strong>Priority:</strong> ${formData.priority}</p>
+                    <p><strong>Reference ID:</strong> ${generateReferenceId()}</p>
+                </div>
+                
+                <div class="next-steps">
+                    <h4>What happens next?</h4>
+                    <ul>
+                        <li>You'll receive a confirmation email</li>
+                        <li>Our team will review your message</li>
+                        <li>We'll respond within our standard timeframe</li>
+                        <li>You can track your ticket status</li>
+                    </ul>
+                </div>
+            </div>
+        `;
+        
+        // Replace form with success message
+        $('#contactForm').parent().html(successHtml);
+    }
+    
+    function showErrorMessage(message) {
+        ErrorHandler.showError(message, 'error');
+    }
+    
+    function generateReferenceId() {
+        return 'TICKET-' + Date.now().toString().slice(-8).toUpperCase();
+    }
+</script>
+
+<!-- Contact page specific styles -->
+<style>
+    .contact-container {
+        padding: 2rem 0;
+    }
+    
+    .page-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 8px;
+    }
+    
+    .page-header h1 {
+        margin-bottom: 1rem;
+        font-size: 3rem;
+    }
+    
+    .page-header .lead {
+        font-size: 1.25rem;
+        opacity: 0.9;
+    }
+    
+    .contact-form-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .contact-form-card h2 {
+        margin-bottom: 2rem;
+        color: #333;
+        border-bottom: 2px solid #007bff;
+        padding-bottom: 0.5rem;
+    }
+    
+    .contact-form .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .priority-options {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .priority-option {
+        cursor: pointer;
+        margin: 0;
+    }
+    
+    .priority-option input[type="radio"] {
+        display: none;
+    }
+    
+    .priority-label {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border: 2px solid transparent;
+    }
+    
+    .priority-label.low {
+        background: #d4edda;
+        color: #155724;
+    }
+    
+    .priority-label.medium {
+        background: #fff3cd;
+        color: #856404;
+    }
+    
+    .priority-label.high {
+        background: #f8d7da;
+        color: #721c24;
+    }
+    
+    .priority-label.urgent {
+        background: #f8d7da;
+        color: #721c24;
+        font-weight: bold;
+    }
+    
+    .priority-label.selected {
+        border-color: #333;
+        transform: scale(1.05);
+    }
+    
+    .form-actions {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+    
+    .submit-icon, .reset-icon {
+        margin-right: 0.5rem;
+    }
+    
+    .char-counter {
+        font-size: 0.8rem;
+        color: #666;
+        margin-top: 0.25rem;
+    }
+    
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+    
+    .info-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.2s ease;
+    }
+    
+    .info-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .info-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .info-card h3 {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .info-card p {
+        margin: 0;
+        color: #666;
+        line-height: 1.6;
+    }
+    
+    .faq-section {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .faq-section h3 {
+        margin-bottom: 1.5rem;
+        color: #333;
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 0.5rem;
+    }
+    
+    .faq-item {
+        margin-bottom: 1.5rem;
+    }
+    
+    .faq-item:last-child {
+        margin-bottom: 0;
+    }
+    
+    .faq-item h4 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        color: #007bff;
+    }
+    
+    .faq-item p {
+        margin: 0;
+        color: #666;
+        font-size: 0.9rem;
+    }
+    
+    .response-info {
+        margin-top: 3rem;
+    }
+    
+    .response-card {
+        background: #fff;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+    
+    .response-card h3 {
+        margin-bottom: 1.5rem;
+        color: #333;
+    }
+    
+    .response-times {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+    
+    .response-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 4px;
+    }
+    
+    .response-label {
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .response-time {
+        font-weight: bold;
+        color: #007bff;
+    }
+    
+    .success-message {
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    .success-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .success-message h3 {
+        margin-bottom: 1rem;
+        color: #28a745;
+    }
+    
+    .message-details {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        text-align: left;
+    }
+    
+    .message-details p {
+        margin: 0.5rem 0;
+    }
+    
+    .next-steps {
+        text-align: left;
+        margin-top: 2rem;
+    }
+    
+    .next-steps h4 {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    
+    .next-steps ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .next-steps li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .next-steps li:last-child {
+        border-bottom: none;
+    }
+    
+    .next-steps li::before {
+        content: '✓';
+        color: #28a745;
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+        .page-header h1 {
+            font-size: 2rem;
+        }
+        
+        .form-actions {
+            flex-direction: column;
+        }
+        
+        .priority-options {
+            flex-direction: column;
+        }
+        
+        .response-times {
+            grid-template-columns: 1fr;
+        }
+        
+        .response-item {
+            flex-direction: column;
+            text-align: center;
+            gap: 0.5rem;
+        }
+    }
+</style> 
